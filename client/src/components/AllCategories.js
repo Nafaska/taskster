@@ -39,7 +39,7 @@ const AllCategories = () => {
   }, [expandedDropdown]);
 
   return (
-    <div ref={node} className="relative w-1/2 mt-32">
+    <div ref={node} className="relative sm:w-1/2 w-2/3 mt-32">
       <button
         onClick={onDropdownClick}
         type="button"

@@ -27,7 +27,7 @@ const AddNewCategory = () => {
   };
 
   return (
-    <div className="relative w-1/2 mt-6">
+    <div className="relative sm:w-1/2 w-2/3 mt-6">
       <label htmlFor="createNewTask" className="sr-only">
         Create a new task category
       </label>

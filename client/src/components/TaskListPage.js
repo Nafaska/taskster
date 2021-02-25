@@ -82,7 +82,6 @@ function TaskListPage() {
   }, [category, timespan]);
 
   const ProcessTasksArray = (props) => {
-    console.log(props.taskArray.length)
     if (props.taskArray.length > 0) {
       let result;
       const arrayWithoutDeletedTask = props.taskArray.filter(
