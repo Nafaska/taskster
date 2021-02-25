@@ -70,8 +70,8 @@ function TaskListPage() {
 
   const noTaskMessage = (
     <tr>
-      <td className="px-6 py-3 bg-gray-50 text-center text-base leading-4 font-medium text-gray-700 uppercase tracking-wider">
-        You do not have any tasks yet
+      <td className="px-6 py-3 text-center text-base leading-4 font-medium text-gray-600 uppercase tracking-wider">
+        You do not have any tasks yet ...
       </td>
     </tr>
   );
@@ -118,24 +118,22 @@ function TaskListPage() {
     <div>
       <Header />
       {currentState === noSuchCategoryState && (
-        <div className="text-lg mt-6 ml-3 leading-tight text-gray-900">
-          The{" "}
+        <div className="text-lg m-8 leading-tight text-gray-900">
           <b className="text-blue-700 uppercase tracking-wider">{category}</b>{" "}
           category does not exist. You can create a new one via{" "}
-          <Link className="text-blue-500" to="/">
+          <Link
+            className="text-blue-700 font-bold uppercase tracking-wider"
+            to="/"
+          >
             Category Page.
           </Link>
         </div>
-      )}{" "}
+      )}
       {currentState === categoryExistsState && (
-        <div className="bg-white flex flex-col sm:flex-row items-center justify-between">
+        <div className="bg-gray-500 flex flex-col sm:flex-row items-center justify-between">
           <div className="flex px-4 pt-4 sm:pt-0 sm:px-6 lg:px-8">
-            <div className="text-lg font-bold text-gray-700">
-              List of tasks for{" "}
-              <b className="text-blue-700 uppercase tracking-wider">
-                {category}
-              </b>{" "}
-              category
+            <div className="text-lg font-bold text-yellow-400 uppercase tracking-wider">
+              {category}
             </div>
           </div>
           <AddNewTaskForm
@@ -152,16 +150,16 @@ function TaskListPage() {
           <table className="w-full flex flex-col divide-y divide-gray-200 overflow-hidden border-b border-gray-200">
             <thead>
               <tr className="w-full">
-                <th className="sm:px-6 px-3 w-1/2 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <th className="sm:px-6 px-3 w-1/2 py-3 bg-gray-200 text-left text-base leading-4 font-medium text-gray-600 uppercase tracking-wider">
                   Title
                 </th>
-                <th className="px-3 w-1/2 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <th className="sm:px-6 px-3 w-1/2 py-3 bg-gray-200 text-left text-base leading-4 font-medium text-gray-600 uppercase tracking-wider">
                   Status
                 </th>
                 <th />
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-gray-100 divide-y divide-gray-200">
               <ProcessTasksArray
                 taskArray={tasksList}
                 onDeleteTaskButtonClick={onDeleteTaskButtonClick}

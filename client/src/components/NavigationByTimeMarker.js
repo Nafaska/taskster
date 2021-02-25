@@ -5,12 +5,12 @@ const NavigationBarByTimeMarker = (props) => {
   return (
     <nav className="flex items-center justify-start sm:h-10 border">
       <div
-        className="sm:px-6 px-3 py-3 bg-gray-50 text-left text-base leading-4 font-medium sm:font-bold text-blue-600 uppercase
+        className="sm:px-6 px-3 py-3 bg-gray-50 text-left text-base leading-4 font-medium sm:font-bold text-blue-700 uppercase
         tracking-wider"
       >
         Display
       </div>
-      <div className="flex items-center	text-center flex-row text-blue-500">
+      <div className="flex items-center	text-center flex-row text-blue-700">
         <Link
           to={`/${props.category}`}
           className="font-light sm:font-medium hover:text-blue-800 transition duration-150 ease-in-out"

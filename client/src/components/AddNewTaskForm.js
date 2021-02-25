@@ -33,7 +33,7 @@ const AddNewTaskForm = (props) => {
       <form>
         <input
           name="createNewTask"
-          className="rounded-l w-2/3 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 text-sm"
+          className="rounded-l w-2/3 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 text-sm"
           value={inputValue}
           placeholder="Create a new task"
           onChange={onInputValueChange}
@@ -42,7 +42,7 @@ const AddNewTaskForm = (props) => {
           type="submit"
           disabled={inputValue === "" || inputValue === " "}
           onClick={onAddButtonClick}
-          className="justify-center py-2 w-1/3 px-4 border border-transparent text-sm font-medium rounded-r text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="justify-center py-2 w-1/3 px-4 border border-transparent text-sm font-medium rounded-r text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
         >
           Add
         </button>
