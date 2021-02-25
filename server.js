@@ -7,7 +7,13 @@ import shortid from "shortid";
 
 require("dotenv").config();
 
-const { readFile, stat, writeFile, readdir } = require("fs").promises;
+const {
+  readFile,
+  stat,
+  writeFile,
+  readdir,
+  unlink,
+} = require("fs").promises;
 
 const TIME_NOW = +new Date();
 const SECOND = 1000;
@@ -26,10 +32,6 @@ const FILETEMPLATE = (req) => {
     _createdAt: TIME_NOW,
     _deletedAt: null,
   };
-};
-
-const FORMATED_FILETEMPLATE = (req) => {
-  return JSON.stringify([FILETEMPLATE(req)]);
 };
 
 const app = express();
@@ -68,7 +70,7 @@ const readFileData = async (category) => {
   const text = await readFile(`${__dirname}/data/tasks/${category}.json`, {
     encoding: "utf8",
   });
-  return text ? JSON.parse(text) : false
+  return text ? JSON.parse(text) : [];
 };
 
 const writeFileData = async (updatedData, category) => {
@@ -140,6 +142,23 @@ app.get("/api/v1/tasks/:category/:timespan", async (req, res) => {
   }
 });
 
+app.post("/api/v1/tasks", async (req, res) => {
+  const { category } = req.body;
+  try {
+    await stat(`${__dirname}/data/tasks/${category}.json`);
+    res.status(409).send(`${category} category is already exists`);
+  } catch (err) {
+    console.log(err);
+    if ((err.errno = -2)) {
+      await writeFileData([], category);
+      res.status(200).send(`${category} category is created`);
+    } else {
+      console.log(err);
+      res.status(500).send(`Something went wrong`);
+    }
+  }
+});
+
 app.post("/api/v1/tasks/:category", async (req, res) => {
   const { category } = req.params;
   try {
@@ -152,8 +171,7 @@ app.post("/api/v1/tasks/:category", async (req, res) => {
   } catch (err) {
     console.log(err);
     if ((err.errno = -2)) {
-      await writeFileData([], category);
-      res.status(200).send(`${category} category is created`);
+      res.status(200).send(`${category} category doesn't exist`);
     } else {
       console.log(err);
       res.status(500).send(`Something went wrong`);
@@ -188,6 +206,22 @@ app.patch("/api/v1/tasks/:category/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(`Something went wrong`);
+  }
+});
+
+app.delete("/api/v1/tasks/:category", async (req, res) => {
+  const { category } = req.params;
+  try {
+    await unlink(`${__dirname}/data/tasks/${category}.json`);
+    res.status(200).send(`${category} category is deleted`);
+  } catch (err) {
+    console.log(err);
+    if ((err.errno = -2)) {
+      res.status(200).send(`${category} category doesn't exist`);
+    } else {
+      console.log(err);
+      res.status(500).send(`Something went wrong`);
+    }
   }
 });
 

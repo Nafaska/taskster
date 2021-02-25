@@ -1,28 +1,30 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const AddNewCategory = () => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState("");
 
   const onInputValueChange = (e) => {
-    setInputValue(e.target.value)
-  }
+    setInputValue(e.target.value);
+  };
 
-  const history = useHistory()
+  const history = useHistory();
 
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const onAddButtonClick = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await axios.post(`/api/v1/tasks/${inputValue}`)
-      await history.push(`/${inputValue}`)
+      await axios.post("/api/v1/tasks", {
+        category: inputValue,
+      });
+      await history.push(`/${inputValue}`);
     } catch (err) {
-      console.error(err)
-      setError(true)
+      console.error(err);
+      setError(true);
     }
-  }
+  };
 
   return (
     <div className="relative w-1/2 mt-6">
@@ -49,6 +51,6 @@ const AddNewCategory = () => {
       </form>
     </div>
   );
-}
+};
 
-export default AddNewCategory
+export default AddNewCategory;

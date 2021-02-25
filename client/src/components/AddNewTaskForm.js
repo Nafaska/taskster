@@ -13,10 +13,10 @@ const AddNewTaskForm = (props) => {
       const res = await axios.post(
         `/api/v1/tasks/${props.category}`,
         {
-          title: inputValue
+          title: inputValue,
         },
-        { headers: { 'content-type': 'application/json' } }
-      )
+        { headers: { "content-type": "application/json" } }
+      );
       const updatedData = res.data
       setInputValue('')
       props.setTasksList(updatedData)
