@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# `Taskster`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Task manager web application. User is able to: group tasks in different categories, manage the status of each task between `new` - `in progress` - `blocked` - `done`, sort tasks by time marker: created `today` / `this week` / `this month`.
 
-## Available Scripts
+Deployed to Heroku: https://taskster-app.herokuapp.com. Deployment to Heroku is triggered each time a new commit is pushed to the main branch. 
 
-In the project directory, you can run:
+## Technologies and libraries used: 
 
-### `yarn start`
+ - Server - [Node](https://nodejs.org), [Express](https://expressjs.com)
+ - Data is stored on server filesystem in JSON files
+ - Client Framework - [React](https://reactjs.org)
+ - Styles - [Tailwind CSS](https://tailwindcss.com)
+ - ID generator - [shortid](https://www.npmjs.com/package/shortid)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Architecture: 
+<img src="./docs/ArchitectureSchema.png" title="Architecture Diagram">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Implementation specifics: 
+- Logs are stored in the filesystem and the file size isn’t controlled.
+- User management is out of scope, the application works in “single user mode”.
 
-### `yarn test`
+## Planned Improvements:
+- Maybe try to use DB.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Main interaction scenarios as GIFs:
+<img src="./docs/CreateCategory.gif" title="Create Category">
+<img src="./docs/ManageTasks.gif" title="Manage Tasks">
+<img src="./docs/FilterByTimemarker.gif" title="Filter By Timemarker">
 
-### `yarn build`
+## Screenshots:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Desktop (macOS, Chrome):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p float="left">
+  <img src="./docs/CategoriesPage.png" width="75%" title="Categories Page">
+  <img src="./docs/TasksPage.png" width="75%" title="Tasks Page">
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### Mobile (iOS, Chrome):
+<p float="left">
+  <img src="./docs/.jpg" height="600" title="All Goods"/>
+  <img src="./docs/.jpg" height="600" title="Basket"/> 
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
