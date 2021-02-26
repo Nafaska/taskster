@@ -115,7 +115,6 @@ app.get("/api/v1/tasks/:category/:timespan", async (req, res) => {
         }
         return processFileData(acc);
       }, []);
-      // const formatedFileContant = processFileData(filteredTasks);
     };
     switch (timespan) {
       case "day":
