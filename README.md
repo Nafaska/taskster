@@ -39,7 +39,7 @@ Deployed to Heroku: https://taskster-app.herokuapp.com. Deployment to Heroku is 
 
 ### Mobile (iOS, Chrome):
 <p float="left">
-  <img src="./docs/.jpg" height="600" title="All Goods"/>
-  <img src="./docs/.jpg" height="600" title="Basket"/> 
+  <img src="./docs/CategoriesPageMobile.jpg" height="600" title="Categories Page"/>
+  <img src="./docs/TasksPageMobile.jpg" height="600" title="Tasks Page"/> 
 </p>
 
