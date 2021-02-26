@@ -7,13 +7,7 @@ import shortid from "shortid";
 
 require("dotenv").config();
 
-const {
-  readFile,
-  stat,
-  writeFile,
-  readdir,
-  unlink,
-} = require("fs").promises;
+const { readFile, stat, writeFile, readdir, unlink } = require("fs").promises;
 
 const TIME_NOW = +new Date();
 const SECOND = 1000;
@@ -53,6 +47,7 @@ const middleware = [
 middleware.forEach((it) => app.use(it));
 
 const processFileData = (obj) => {
+  console.log(obj);
   const withoutDeleted = Object.values(obj).filter(
     (task) => task["_isDeleted"] !== true
   );
@@ -114,12 +109,13 @@ app.get("/api/v1/tasks/:category/:timespan", async (req, res) => {
     const fileContent = await readFileData(category);
     const filteredTasks = (timeMarker) => {
       return Object.keys(fileContent).reduce((acc, rec) => {
-        const formatedFileContant = processFileData(fileContent[rec]);
         if (fileContent[rec]._createdAt + timeMarker > TIME_NOW) {
-          return [...acc, formatedFileContant];
+          console.log(fileContent[rec], fileContent[rec]._createdAt, timeMarker, TIME_NOW);
+          return processFileData([...acc, fileContent[rec]]);
         }
-        return acc;
+        return processFileData(acc);
       }, []);
+      // const formatedFileContant = processFileData(filteredTasks);
     };
     switch (timespan) {
       case "day":
